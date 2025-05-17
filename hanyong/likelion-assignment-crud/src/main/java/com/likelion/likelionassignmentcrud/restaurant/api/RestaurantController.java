@@ -15,20 +15,20 @@ import org.springframework.web.bind.annotation.*;
 public class RestaurantController {
     private final RestaurantService restaurantService;
 
-    //사용자 저장
+    //식당 저장
     @PostMapping("/save")
     public ResponseEntity<String> restaurantSave(@RequestBody RestaurantSaveRequestDto restaurantSaveRequestDto){
         restaurantService.restaurantSave(restaurantSaveRequestDto);
-        return new ResponseEntity<>("사용자 저장!", HttpStatus.CREATED);
+        return new ResponseEntity<>("식당 저장!", HttpStatus.CREATED);
     }
-    //사용자 전체 조회
+    //식당 전체 조회
     @GetMapping("/all")
     public ResponseEntity<RestaurantListResponseDto>restaurantFindAll(){
         RestaurantListResponseDto restaurantListResponseDto = restaurantService.restaurantfindAll();
         return new ResponseEntity<>(restaurantListResponseDto, HttpStatus.OK);
     }
 
-    //회원 id를 통해 특정 사용자 조회
+    //식당 id를 통해 특정 식당 조회
     @GetMapping("/{restaurantId}")
     public ResponseEntity<RestaurantInfoResponseDto> restaurantFindOne(@PathVariable("restaurantId") Long restaurantId){
         RestaurantInfoResponseDto restaurantInfoResponseDto = restaurantService.restaurantFindOne(restaurantId);

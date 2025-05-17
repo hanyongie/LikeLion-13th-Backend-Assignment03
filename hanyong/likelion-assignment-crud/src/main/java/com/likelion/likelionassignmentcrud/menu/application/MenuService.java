@@ -21,7 +21,7 @@ public class MenuService {
     private final RestaurantRepository restaurantRepository;
     private final MenuRepository menuRepository;
 
-    //게시물 저장
+    //메뉴 저장
     @Transactional
     public void menuSave(MenuSaveRequestDto menuSaveRequestDto) {
         Restaurant restaurant = restaurantRepository.findById(menuSaveRequestDto.menuId()).orElseThrow(IllegalArgumentException::new);
@@ -32,7 +32,7 @@ public class MenuService {
                 .build();
         menuRepository.save(menu);
     }
-    //특정 작성자가 작성한 게시글 목록을 조회
+    //특정 식당으로 메뉴 목록을 조회
     public MenuListResponseDto menuFindRestaurant(Long restaurantId) {
         Restaurant restaurant = restaurantRepository.findById(restaurantId).orElseThrow(IllegalArgumentException::new);
 

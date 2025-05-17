@@ -17,7 +17,7 @@ import java.util.List;
 public class RestaurantService {
     private final RestaurantRepository restaurantRepository;
 
-    //사용자 정보 저장
+    //식당 정보 저장
     @Transactional
     public void restaurantSave(RestaurantSaveRequestDto restaurantSaveRequestDto) {
         Restaurant restaurant = Restaurant.builder()
@@ -28,7 +28,7 @@ public class RestaurantService {
         restaurantRepository.save(restaurant);
     }
 
-    //사용자 모두 조회
+    //식당 모두 조회
     public RestaurantListResponseDto restaurantfindAll() {
         List<Restaurant> restaurants = restaurantRepository.findAll();
         List<RestaurantInfoResponseDto> restaurantInfoResponseDtoList = restaurants.stream()
@@ -36,7 +36,7 @@ public class RestaurantService {
                 .toList();
         return RestaurantListResponseDto.from(restaurantInfoResponseDtoList);
     }
-    // 단일 사용자 조회
+    // 단일 식당 조회
     public RestaurantInfoResponseDto restaurantFindOne(Long restaurantId) {
         Restaurant restaurant = restaurantRepository
                 .findById(restaurantId)
